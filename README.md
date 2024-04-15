@@ -17,6 +17,8 @@ Run bellow command to start the application in development mode
 
 This will expose the API on localhost on port 8080 or on port set on .env file
 
+- [ ] import the postman collection to test the API from docs folder
+
 ## SWAGGER
 
 http://localhost:8080/api/v1/

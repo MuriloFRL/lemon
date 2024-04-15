@@ -1,0 +1,130 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Lemon Backend - CLIENTs API",
+    "description": "This API provide clients endpoints from lemon clients microservice.",
+    "contact": {
+      "email": "lemon-engineering-team@lemon.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/v1",
+      "description": "TEST API"
+    }
+  ],
+  "paths": {
+    "/client/eligibility": {
+      "post": {
+        "summary": "Validate Client Eligibility",
+        "description": "validate if a lead is eligible to be a client on lemon platform",
+        "tags": [
+          "Client"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientEligibility"
+              },
+              "examples": {
+                "client": {
+                  "value": {
+                    "numeroDoDocumento": "14041737706",
+                    "tipoDeConexao": "bifasico",
+                    "classeDeConsumo": "comercial",
+                    "modalidadeTarifaria": "convencional",
+                    "historicoDeConsumo": [
+                      3878,
+                      9760,
+                      5976,
+                      2797,
+                      2481,
+                      5731,
+                      7538,
+                      4392,
+                      7859,
+                      4160,
+                      6941,
+                      4597
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "An unexpected error occurred in the server"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "elegivel": {
+                      "type": "boolean"
+                    },
+                    "economiaAnualDeCO2": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "examples": {
+                  "eligible": {
+                    "value": {
+                      "elegivel": true,
+                      "economiaAnualDeCO2": 5553.240000000001
+                    }
+                  },
+                  "ineligible": {
+                    "value": {
+                      "elegivel": false,
+                      "razoesDeInelegibilidade": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ClientEligibility": {
+        "type": "object",
+        "properties": {
+          "numeroDoDocumento": {
+            "type": "string"
+          },
+          "tipoDeConexao": {
+            "type": "string"
+          },
+          "classeDeConsumo": {
+            "type": "string"
+          },
+          "modalidadeTarifaria": {
+            "type": "string"
+          },
+          "historicoDeConsumo": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 6,
+            "maxItems": 12
+          }
+        }
+      }
+    }
+  }
+}

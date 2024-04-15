@@ -1,0 +1,150 @@
+{
+  "info": {
+    "_postman_id": "b5290ac4-e4cb-4adc-8235-d4f7c3a25138",
+    "name": "lemon",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14066442"
+  },
+  "item": [
+    {
+      "name": "API",
+      "item": [
+        {
+          "name": "CLIENT",
+          "item": [
+            {
+              "name": "ELIGIBILITY",
+              "item": [
+                {
+                  "name": "SUCCESS",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"numeroDoDocumento\": \"14041737706\",\n  \"tipoDeConexao\": \"bifasico\",\n  \"classeDeConsumo\": \"comercial\",\n  \"modalidadeTarifaria\": \"convencional\",\n  \"historicoDeConsumo\": [\n    3878, // mes atual\n    9760, // mes anterior\n    5976, // 2 meses atras\n    2797, // 3 meses atras\n    2481, // 4 meses atras\n    5731, // 5 meses atras\n    7538, // 6 meses atras\n    4392, // 7 meses atras\n    7859, // 8 meses atras\n    4160, // 9 meses atras\n    6941, // 10 meses atras\n    4597  // 11 meses atras\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/v1/client/eligibility/",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "v1",
+                        "client",
+                        "eligibility",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "FAIL - INVALID CONSUMPTION CLASS",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"numeroDoDocumento\": \"14041737706\",\n  \"tipoDeConexao\": \"bifasico\",\n  \"classeDeConsumo\": \"rural\",\n  \"modalidadeTarifaria\": \"convencional\",\n  \"historicoDeConsumo\": [\n    3878, // mes atual\n    9760, // mes anterior\n    5976, // 2 meses atras\n    2797, // 3 meses atras\n    2481, // 4 meses atras\n    5731, // 5 meses atras\n    7538, // 6 meses atras\n    4392, // 7 meses atras\n    7859, // 8 meses atras\n    4160, // 9 meses atras\n    6941, // 10 meses atras\n    4597  // 11 meses atras\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/v1/client/eligibility",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "v1",
+                        "client",
+                        "eligibility"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "FAIL - INVALID TAX MODEL Copy",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"numeroDoDocumento\": \"14041737706\",\n  \"tipoDeConexao\": \"bifasico\",\n  \"classeDeConsumo\": \"comercial\",\n  \"modalidadeTarifaria\": \"azul\",\n  \"historicoDeConsumo\": [\n    3878, // mes atual\n    9760, // mes anterior\n    5976, // 2 meses atras\n    2797, // 3 meses atras\n    2481, // 4 meses atras\n    5731, // 5 meses atras\n    7538, // 6 meses atras\n    4392, // 7 meses atras\n    7859, // 8 meses atras\n    4160, // 9 meses atras\n    6941, // 10 meses atras\n    4597  // 11 meses atras\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/v1/client/eligibility",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "v1",
+                        "client",
+                        "eligibility"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "FAIL - INVALID CONSUMPTION RATE",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"numeroDoDocumento\": \"14041737706\",\n  \"tipoDeConexao\": \"bifasico\",\n  \"classeDeConsumo\": \"comercial\",\n  \"modalidadeTarifaria\": \"branca\",\n  \"historicoDeConsumo\": [\n    100, 200, 300, 400, 500, 100, 200, 300, 400, 500, 100, 200\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/v1/client/eligibility",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "v1",
+                        "client",
+                        "eligibility"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
